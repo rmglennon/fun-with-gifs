@@ -28,17 +28,38 @@ $(".buttons").on("click", function() {
 
   var queryURL = baseURL + searchTerm + "&" + "limit="+ limit + "&" + apiKey;
     console.log("search term: " + searchTerm);
+      console.log(queryURL);
 
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).then(function(response) {
+
     console.log(response);
-    var image = ("<img>");
-    var imageURL = response[0].images.fixed_height_still.url;
-    image.attr("src", imageURL);
-    //image.attr("alt", "")
-    $("#gif-container").append(image);
+
+    var results = response.data;
+
+    for (var i = 0; i < results.length; i++) {
+
+      // Creating and storing a div tag
+      var foodDiv = $("<div>");
+
+      // Creating a paragraph tag with the result item's rating
+
+      var ratingText = $("<p>").text("Rating: " + results[i].rating);
+
+      // Creating and storing an image tag
+      var foodImage = $("<img>");
+      // Setting the src attribute of the image to a property pulled off the result item
+      foodImage.attr("src", results[i].images.fixed_height_still.url);
+
+      // Appending the paragraph and image tag to the animalDiv
+      foodDiv.append(rating);
+      foodDiv.append(foodImage);
+
+      // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+      $("#gif-container").prepend(foodDiv);
+    }
 
   });
 
