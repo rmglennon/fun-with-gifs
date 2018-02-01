@@ -1,10 +1,10 @@
 $(document).ready(function(){
 
-createButtons();
+
+
+var topics = ["cookie", "cupcake", "banana", "cheese", "pizza", "tofu", "pie", "lettuce", "ice cream", "salad", "apple", "strawberry", "burrito", "soup", "taco", "watermelon", "chocolate", "mashed potatoes", "pasta", "water"];
 
 function createButtons() {
-
-  var topics = ["cookie", "cupcake", "banana", "cheese", "pizza", "tofu", "pie", "lettuce", "ice cream", "salad", "apple", "strawberry", "burrito", "soup", "taco", "watermelon", "chocolate", "mashed potatoes", "pasta", "water"];
 
   for (var i = 0; i < topics.length; i++) {
     var newButton = $("<button>");
@@ -16,7 +16,7 @@ function createButtons() {
   }
 }
 
-$(".buttons").on("click", function() {
+$(document.body).on("click", ".buttons", function() {
   // base URL for search endpoint (q=)
   var baseURL = "https://api.giphy.com/v1/gifs/search?q=";
   var apiKey = "api_key=2Djlw2Z3UfS0QNM9FkTSOO3bh0o3KOoc";
@@ -90,5 +90,22 @@ $(document.body).on("click", ".pic", function() {
         $(this).attr("data-state", "still");
       }
     });
+
+
+$("#add-food").on("click", function(event) {
+        // event.preventDefault() prevents the form from trying to submit itself.
+        // We're using a form so that the user can hit enter instead of clicking the button if they want
+        event.preventDefault();
+
+        // This line will grab the text from the input box
+        var food = $("#food-input").val().trim();
+        // The movie from the textbox is then added to our array
+        topics.push(food);
+
+        // calling renderButtons which handles the processing of our movie array
+        createButtons();
+      });
+
+      createButtons();
 
 });
