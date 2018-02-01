@@ -1,18 +1,24 @@
+// TODO:
+// style images with borders and rounded edges
+// style ratings text
+// add some UI text describing how to use
+//style add a food text
+
 $(document).ready(function(){
-
-
 
 var topics = ["cookie", "cupcake", "banana", "cheese", "pizza", "tofu", "pie", "lettuce", "ice cream", "salad", "apple", "strawberry", "burrito", "soup", "taco", "watermelon", "chocolate", "mashed potatoes", "pasta", "water"];
 
 function createButtons() {
 
+  $("#gif-buttons").empty();
+
   for (var i = 0; i < topics.length; i++) {
     var newButton = $("<button>");
     newButton.text(topics[i]);
-    newButton.addClass("buttons");
+    newButton.addClass("buttons btn btn-default");
     newButton.attr("data-topic", topics[i]);
     newButton.attr("id", topics[i]);
-    $(".gif-buttons").append(newButton);
+    $("#gif-buttons").append(newButton);
   }
 }
 
@@ -40,7 +46,7 @@ $(document.body).on("click", ".buttons", function() {
     for (var i = 0; i < results.length; i++) {
 
       // Creating and storing a div tag
-      var foodDiv = $("<div>");
+      var foodDiv = $("<div>").attr("id", "food-div");
 
       // Creating a paragraph tag with the result item's rating
 
@@ -100,7 +106,14 @@ $("#add-food").on("click", function(event) {
         // This line will grab the text from the input box
         var food = $("#food-input").val().trim();
         // The movie from the textbox is then added to our array
-        topics.push(food);
+
+        // to make sure buttons with no text do not get created
+        if (food.length > 0) {
+          topics.push(food);
+        }
+
+        //TODO: clear out text box
+
 
         // calling renderButtons which handles the processing of our movie array
         createButtons();

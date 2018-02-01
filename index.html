@@ -12,10 +12,34 @@
 
 <body>
 
-    <div class="gif-buttons"></div>
-    <div class="gif-images" id="gif-container"></div> 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/javascript/app.js"></script>
+  <div class="container">
+    <row>
+      <div class="col-sm-12" id="gif-buttons">
+      </div>
+    </row>
+
+    <row>
+      <div class="col-sm-4 float-right">
+        <form id="food-form">
+          <label for="food-input">Add a food</label>
+          <input type="text" class="form-control" id="food-input"><br>
+
+          <!-- Button triggers new movie to be added -->
+          <input class="btn btn-default" id="add-food" type="submit" value="Submit">
+        </form>
+      </div>
+    </row>
+      <row>
+      <div class="gif-images col-sm-8" id="gif-container"></div>
+
+
+    </row>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 </html>
