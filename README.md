@@ -2,7 +2,7 @@
 
 With Yummy GIFs, you can see fun images about food from GIPHY. Click a button to see GIFs about that kind of food. 
 
-When the images display, click an image animate it and click again to pause. The ratings are displayed with each image.
+When the images display, click an image animate it and click again to pause. The content ratings are displayed with each image.
 
 https://rmglennon.github.io/fun-with-gifs/
 
@@ -16,4 +16,4 @@ This project was built with JavaScript, jQuery, Bootstrap, HTML, and CSS. The im
 
 _Note: This was created for UC Berkeley Extension coding bootcamp as GifTastic in week four._
 
-_Data attribution: Powered By GIPHY_
+_Data attribution: Powered By GIPHY._
