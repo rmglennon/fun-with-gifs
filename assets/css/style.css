@@ -1,22 +1,18 @@
 body {
-  background-color: pink;
+  background-image: url("../images/food.png");
 }
 
 .buttons,
 #food-input,
 #add-food
- {
+{
   margin: 5px;
   border: 2px solid hotpink;
-
-}
-
-#food-input {
-
 }
 
 #food-div {
-    display: inline-block;
+  display: inline-block;
+  margin: 5px;
 }
 
 #gif-buttons {
@@ -25,13 +21,13 @@ body {
 }
 
 .pic {
-  margin-left: 5px;
-  margin-right: 5px;
   border: 2px solid hotpink;
 }
 
 .rating {
   margin-bottom: 5px;
+  font-family: 'Pacifico', cursive;
+  text-align: left;
 }
 
 .display-4 {
@@ -39,7 +35,8 @@ body {
 }
 
 #food-label {
-  font-size: 20px;
+  font-size: 24px;
+  font-family: 'Pacifico', cursive;
 }
 
 #food-form {
@@ -51,18 +48,17 @@ body {
   font-size: 24px;
 }
 
-#gif-container {
-
-}
-
 .text-heading {
-  background-color: pink;
+  background-color: hotpink;
 }
 
-.instructions {
-
+.jumbotron-fluid {
+  padding-bottom: 25px;
+  padding-top: 25px;
 }
 
-.jumbotron {
-  height: 250px;
+#page-instructions {
+  font-size: 16px;
+  margin-top: 20px;
+  margin-left: 5px;
 }
