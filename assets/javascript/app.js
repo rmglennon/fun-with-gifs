@@ -1,16 +1,14 @@
-// TODO:
-// style images with borders and rounded edges
-// style ratings text
-// add some UI text describing how to use
-//style add a food text
-
 $(document).ready(function(){
 
-var topics = ["cookie", "cupcake", "banana", "cheese", "pizza", "tofu", "pie", "lettuce", "ice cream", "salad", "apple", "strawberry", "burrito", "soup", "taco", "watermelon", "chocolate", "mashed potatoes", "pasta", "water"];
+// create an array of foods to pre-populate buttons
+var topics = ["cookie", "cupcake", "banana", "cheese", "macaroni and cheese", "watermelon", "kiwi", "pizza", "tofu", "pie", "lettuce", "ice cream", "apple", "strawberry", "potato chips", "burrito", "taco", "chocolate", "mashed potatoes", "pasta", "water"];
 
 function createButtons() {
 
+  // clear out buttons on start
   $("#gif-buttons").empty();
+
+// create buttons from array contents and add them to the page
 
   for (var i = 0; i < topics.length; i++) {
     var newButton = $("<button>");
@@ -22,72 +20,68 @@ function createButtons() {
   }
 }
 
+// when button is clicked, send AJAX query to Giphy API
 $(document.body).on("click", ".buttons", function() {
   // base URL for search endpoint (q=)
+  // get search term from button that was clicked
+  // set a limit of 10 images to be returned
   var baseURL = "https://api.giphy.com/v1/gifs/search?q=";
   var apiKey = "api_key=2Djlw2Z3UfS0QNM9FkTSOO3bh0o3KOoc";
   var searchTerm = $(this).text();
-  var limit = 10; //default is 25
+  var limit = 10;
   var rating;
 
+  // construct query URL
   var queryURL = baseURL + searchTerm + "&" + "limit="+ limit + "&" + apiKey;
-    console.log("search term: " + searchTerm);
-      console.log(queryURL);
+
+  // clear out existing elements in the main div before each click
+  $("#gif-container").empty();
 
   $.ajax({
     url: queryURL,
     method: 'GET'
   }).then(function(response) {
 
-    console.log(response);
-
     var results = response.data;
 
+    // loop through buttons and add Giphy info
     for (var i = 0; i < results.length; i++) {
 
-      // Creating and storing a div tag
+      // create div to hold images and rating text
       var foodDiv = $("<div>").attr("id", "food-div");
 
-      // Creating a paragraph tag with the result item's rating
-
+      // create p tag to hold rating
       var ratingText = $("<p>").text("Rating: " + results[i].rating);
       ratingText.addClass("rating");
 
-      // Creating and storing an image tag
+      // create image tag to hold images and add classes
       var foodImage = $("<img>");
-      foodImage.addClass("img-fluid pic");
-      // foodImage.attr("data-state", "still");
+      foodImage.addClass("img-fluid pic rounded");
 
+      // set data-still and data-animated property with the URL to the still and animated image
       foodImage.attr("data-still", results[i].images.fixed_height_still.url);
-
       foodImage.attr("src", results[i].images.fixed_height_still.url);
-      // foodImage.attr("data-state", "animated");
       foodImage.attr("data-animated", results[i].images.fixed_height.url);
-
       foodImage.attr("data-state", "still");
 
-      // Appending the paragraph and image tag to the animalDiv
+      // append the rating text and the images to divs
       foodDiv.append(ratingText);
       foodDiv.append(foodImage);
 
-      // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
+      // add to the main container to hold the GIFs on the HTML
       $("#gif-container").prepend(foodDiv);
     }
-
   });
-
 });
 
 // check again for buttons created after document was loaded
 $(document.body).on("click", ".pic", function() {
 
-
-      // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
+  // create variable for data-state of what was clicked
       var state = $(this).attr("data-state");
-      // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      // Else set src to the data-still value
 
+      // if the data-state is still, update source to animated URL
+      // if animated, then update to still image, and swap
       if (state === "still") {
         $(this).attr("src", $(this).attr("data-animated"));
         $(this).attr("data-state", "animated");
@@ -99,26 +93,25 @@ $(document.body).on("click", ".pic", function() {
 
 
 $("#add-food").on("click", function(event) {
-        // event.preventDefault() prevents the form from trying to submit itself.
-        // We're using a form so that the user can hit enter instead of clicking the button if they want
+        // prevent user from reloading the page when trying to submit
         event.preventDefault();
 
-        // This line will grab the text from the input box
+        // get text from input box
         var food = $("#food-input").val().trim();
-        // The movie from the textbox is then added to our array
 
-        // to make sure buttons with no text do not get created
+        // make sure buttons with no text do not get created
         if (food.length > 0) {
           topics.push(food);
         }
 
-        //TODO: clear out text box
-
-
-        // calling renderButtons which handles the processing of our movie array
+        // create the buttons with input box text
         createButtons();
+
+        // clear text box on submit
+        $("#food-input").val("");
       });
 
+      // start app by calling function to create initial set of buttons
       createButtons();
 
 });

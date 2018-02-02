@@ -8,6 +8,7 @@ body {
  {
   margin: 5px;
   border: 2px solid hotpink;
+
 }
 
 #food-input {
@@ -20,21 +21,48 @@ body {
 
 #gif-buttons {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .pic {
   margin-left: 5px;
   margin-right: 5px;
+  border: 2px solid hotpink;
 }
 
 .rating {
+  margin-bottom: 5px;
+}
 
+.display-4 {
+  font-family: 'Pacifico', cursive;
+}
+
+#food-label {
+  font-size: 20px;
 }
 
 #food-form {
   position: right: 200px;
 }
 
+.lead {
+  margin-top: 20px;
+  font-size: 24px;
+}
+
 #gif-container {
 
+}
+
+.text-heading {
+  background-color: pink;
+}
+
+.instructions {
+
+}
+
+.jumbotron {
+  height: 250px;
 }

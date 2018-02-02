@@ -5,13 +5,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Giftastic</title>
+  <title>Fun with GIFs</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 </head>
 
 <body>
-
+  <div class="jumbotron text-center text-heading">
+    <h1 class="display-4">Yummy GIFs</h1>
+    <p class="lead">Satisfy your hunger for animated food images.</p>
+    <hr class="my-4">
+    <p id="banner-instructions">Click a button to display 10 GIFs about that food. Click an image to animate it and click it again to stop playing. </p>
+  </div>
 
   <div class="container">
     <row>
@@ -22,22 +28,18 @@
     <row>
       <div class="col-sm-4 float-right">
         <form id="food-form">
-          <label for="food-input">Add a food</label>
-          <input type="text" class="form-control" id="food-input"><br>
 
-          <!-- Button triggers new movie to be added -->
+          <label for="food-input" id="food-label">Add a food</label>
+          <p id="instructions">Use the search box to add a new button and see GIFs about your favorite food.</p>
+          <input type="text" class="form-control" id="food-input">
           <input class="btn btn-default" id="add-food" type="submit" value="Submit">
         </form>
       </div>
     </row>
       <row>
       <div class="gif-images col-sm-8" id="gif-container"></div>
-
-
     </row>
   </div>
-
-
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="assets/javascript/app.js"></script>
