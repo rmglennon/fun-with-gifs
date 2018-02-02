@@ -8,7 +8,7 @@ https://rmglennon.github.io/fun-with-gifs/
 
 To see more GIFs of other kinds of food, type a search term to add a new button to the list.
 
-![gif-screenshot.png](Screenshot of GIPHY app)
+![Screenshot of GIPHY app](gif-screenshot.png)
 
 ## Technology
 
